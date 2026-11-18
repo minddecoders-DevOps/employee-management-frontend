@@ -84,7 +84,7 @@ function deleteEmployee(id) {
 }
 
 searchInput.addEventListener("input", function() {
-    const searchTerm = this.value.toLowerCase();
+    const searchTerm = this.value.trim().toLowerCase();
 
     const filteredEmployees = employees.filter(employee =>
         employee.name.toLowerCase().includes(searchTerm) ||
