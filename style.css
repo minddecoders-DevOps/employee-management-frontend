@@ -69,3 +69,8 @@ button:hover {
 }
 
 
+.version {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
