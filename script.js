@@ -24,7 +24,8 @@ function displayEmployees(data = employees) {
 
         const department = document.createElement("p");
         department.textContent = "Department: " + employee.department;
-
+const phone = document.createElement("p");
+phone.textContent = "Phone: " + (employee.phone || "Not provided");
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
         editButton.className = "edit-button";
@@ -35,7 +36,7 @@ function displayEmployees(data = employees) {
         deleteButton.className = "delete-button";
         deleteButton.addEventListener("click", () => deleteEmployee(employee.id));
 
-        card.append(name, email, department, editButton, deleteButton);
+        card.append(name, email, department, phone, editButton, deleteButton);
         employeeList.appendChild(card);
     });
 }
@@ -47,7 +48,8 @@ employeeForm.addEventListener("submit", function(event) {
     const employee = {
         id: id || Date.now().toString(),
         name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
+       phone: document.getElementById("phone").value.trim(),
+	email: document.getElementById("email").value.trim(),
         department: document.getElementById("department").value.trim()
     };
 
@@ -73,6 +75,7 @@ function editEmployee(id) {
     document.getElementById("name").value = employee.name;
     document.getElementById("email").value = employee.email;
     document.getElementById("department").value = employee.department;
+    document.getElementById("phone").value = employee.phone || "";
     document.getElementById("submitButton").textContent = "Update Employee";
 }
 
@@ -89,7 +92,8 @@ searchInput.addEventListener("input", function() {
     const filteredEmployees = employees.filter(employee =>
         employee.name.toLowerCase().includes(searchTerm) ||
         employee.email.toLowerCase().includes(searchTerm) ||
-        employee.department.toLowerCase().includes(searchTerm)
+        employee.department.toLowerCase().includes(searchTerm) ||
+(employee.phone || "").toLowerCase().includes(searchTerm)
     );
 
     displayEmployees(filteredEmployees);
