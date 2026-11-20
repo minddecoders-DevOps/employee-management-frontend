@@ -1,4 +1,4 @@
-# Employee Management System - Developer 1
+# Employee Management System 
 Employee Management Website using HTML, CSS and JavaScript for practicing Git and GitHub collaboration.
 ## Employee Status
 
